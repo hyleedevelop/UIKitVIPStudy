@@ -14,7 +14,9 @@ typealias HomeScenePresenterInput = HomeSceneInteractorOutput
 
 /// Presenter -> ViewController 통신을 위해 준수해야 하는 프로토콜
 protocol HomeScenePresenterOutput: AnyObject {
-    func displayUserProfile(user: HomeModel.FetchUserInfo.ViewModel)
+    func displayUserProfile(viewModel: HomeModel.FetchUserInfo.ViewModel)
+    func displayFailStatus()
+    func prepareDataToPass(dataToPass: UserInfo)
 }
 
 //MARK: - 속성 선언
@@ -42,16 +44,38 @@ extension HomePresenter {
 extension HomePresenter: HomeScenePresenterInput {
     
     /// 네트워킹을 통해 받아온 깃허브 사용자 정보를
-    /// ViewModel 포맷으로 변환 후 ViewController에 나타내기
-    /// - Parameter user: 네트워킹을 통해 받아온 깃허브 사용자 정보 데이터
-    func convertUserInfo(userInfo: HomeModel.FetchUserInfo.Response?) {
-        guard let userInfo = userInfo else { return }
+    /// 다른 포맷으로 변환 후 ViewController에 전달하기
+    /// (현재 화면에 표시할 데이터 + 다음 화면에 넘길 데이터)
+    /// - Parameter userInfo: 네트워킹을 통해 받아온 깃허브 사용자 정보 데이터
+    func convertResponseFormat(response: HomeModel.FetchUserInfo.Response?) {
+        guard let response = response else {
+            self.viewController?.displayFailStatus()
+            return
+        }
+        
         let viewModel = HomeModel.FetchUserInfo.ViewModel(
-            imageURL: userInfo.avatarUrl,
-            id: userInfo.login
+            imageURL: response.avatarUrl,
+            id: response.login
         )
         
-        self.viewController?.displayUserProfile(user: viewModel)
+        let dataToPass = UserInfo(
+            imageURL: response.avatarUrl,
+            id: response.login,
+            name: response.name,
+            bio: response.bio,
+            location: response.location,
+            publicRepositories: response.publicRepos,
+            publicGists: response.publicGists,
+            followers: response.followers,
+            following: response.following
+        )
+        
+        self.viewController?.displayUserProfile(viewModel: viewModel)
+        self.viewController?.prepareDataToPass(dataToPass: dataToPass)
+    }
+    
+    func passFailStatus() {
+        self.viewController?.displayFailStatus()
     }
     
 }

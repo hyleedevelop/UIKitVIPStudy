@@ -9,30 +9,41 @@ import UIKit
 
 //MARK: - 프로토콜 선언
 
+/// **Presenter** -> **ViewController** 통신을 위해 준수해야 하는 프로토콜
 typealias DetailSceneViewControllerInput = DetailScenePresenterOutput
 
+/// **ViewController** -> **Interactor** 통신을 위해 준수해야 하는 프로토콜
 protocol DetailSceneViewControllerOutput: AnyObject {
-    //var user: DetailModel.UserInfo.Response? { get }
-    
-    func doSomething()
+    func passUserInfoToPresenter(request: DetailModel.DisplayUserInfoDetails.Request)
 }
 
 //MARK: - 속성 선언 및 초기화
 
 final class DetailViewController: UIViewController {
     
-    // UI
+    // 이전 화면에서 전달받을 데이터 (Router에 의해 초기화 됨)
+    var dataToReceive: UserInfo
+    
+    // View
     private let detailView = DetailView()
     
-    // ViewModel
-    private var userInfoDetails: DetailModel.DisplayUserInfoDetails.ViewModel?
+    // Model
+    private var viewModel: DetailModel.DisplayUserInfoDetails.ViewModel?
     
-    // Modules (Configurator에 의해 초기화 됨)
+    // Router (Configurator에 의해 초기화 됨)
     var router: DetailSceneRoutingLogic!
+    
+    // Interactor (Configurator에 의해 초기화 됨)
     var interactor: DetailSceneViewControllerOutput!
     
-    // Initializer
-    init(configurator: DetailConfigurator = DetailConfigurator.shared) {
+    /// ViewController의 인스턴스를 생성
+    /// - Parameters:
+    ///   - dataToReceive: 이전 화면으로부터 전달받을 데이터
+    ///   - configurator: Configurator 싱글톤 인스턴스
+    init(dataToReceive: UserInfo, configurator: DetailConfigurator = DetailConfigurator.shared) {
+        self.dataToReceive = dataToReceive
+        
+        // 모든 속성이 초기화되어 있어야 super.init 호출 가능
         super.init(nibName: nil, bundle: nil)
         
         configurator.configure(viewController: self)
@@ -44,27 +55,36 @@ final class DetailViewController: UIViewController {
     
 }
 
+//MARK: - 내부 메서드
+
 extension DetailViewController {
     
+    /// 뷰 불러오기
     override func loadView() {
         self.view = detailView
-        self.view.backgroundColor = .systemBackground
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.setupView()
+        
+        let request = DetailModel.DisplayUserInfoDetails.Request(data: self.dataToReceive)
+        self.interactor.passUserInfoToPresenter(request: request)
+    }
+    
+    /// 뷰 설정
+    private func setupView() {
+        // View의 배경 색상 설정
         self.view.backgroundColor = .systemBackground
-        self.navigationItem.title = "홍길동"
-    }
-    
-    /// Set up navigation bar.
-    private func setupNavigationBar() {
-        self.navigationItem.title = "User List"
-    }
-    
-    /// Set up tableview.
-    private func setupTableView() {
+
+        // 네비게이션 바 제목 설정
+        self.navigationItem.title = "상세정보"
+        
+        // View의 대리자 설정
+        self.detailView.delegate = self
+        
+        // TableView의 대리자 설정
         self.detailView.tableView.delegate = self
         self.detailView.tableView.dataSource = self
     }
@@ -75,9 +95,9 @@ extension DetailViewController {
 
 extension DetailViewController: DetailSceneViewControllerInput {
 
-    /// Get ViewModel data and display them on the TableView.
-    func displayUserDetail(user: DetailModel.DisplayUserInfoDetails.ViewModel) {
-        self.userInfoDetails = user
+    /// TableView에 사용자 상세 정보 표시
+    func displayUserDetail(viewModel: DetailModel.DisplayUserInfoDetails.ViewModel) {
+        self.viewModel = viewModel
         
         DispatchQueue.main.async {
             self.detailView.tableView.reloadData()
@@ -86,17 +106,21 @@ extension DetailViewController: DetailSceneViewControllerInput {
     
 }
 
-//MARK: - 테이블뷰 델리게이트 메서드 구현
+//MARK: - 테이블뷰 델리게이트 메서드
 
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.userInfoDetails?.details.count ?? 0
+        return self.viewModel?.tableViewData.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = self.userInfoDetails?.details[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as? DetailTableViewCell else { return UITableViewCell() }
+        //cell.textLabel?.text = self.viewModel?.details[indexPath.row]
+        cell.setupCellUI(
+            title: self.viewModel?.tableViewData[indexPath.row].0 ?? "",
+            description: self.viewModel?.tableViewData[indexPath.row].1 ?? ""
+        )
         
         return cell
     }
@@ -106,7 +130,23 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 70
+    }
+    
+}
+
+//MARK: - View 델리게이트 메서드
+
+extension DetailViewController: DetailViewDelegate {
+    
+    func visitButtonTapped() {
+        print("https://github.com/\(self.dataToReceive.id)")
+        if let url = URL(string: "https://github.com/\(self.dataToReceive.id)") {
+            print("here")
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:])
+            }
+        }
     }
     
 }

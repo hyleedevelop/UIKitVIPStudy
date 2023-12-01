@@ -28,6 +28,7 @@
 		07B247602B1841AA008049EE /* HomeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2475F2B1841AA008049EE /* HomeConfigurator.swift */; };
 		07B247622B184897008049EE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B247612B184897008049EE /* HomeView.swift */; };
 		07C7F4052B197DED00F586EC /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C7F4042B197DED00F586EC /* UserInfo.swift */; };
+		07C7F40B2B19D24D00F586EC /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C7F40A2B19D24D00F586EC /* DetailTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		07B2475F2B1841AA008049EE /* HomeConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeConfigurator.swift; sourceTree = "<group>"; };
 		07B247612B184897008049EE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		07C7F4042B197DED00F586EC /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		07C7F40A2B19D24D00F586EC /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,8 +159,8 @@
 			children = (
 				07B2475F2B1841AA008049EE /* HomeConfigurator.swift */,
 				07B2475D2B183450008049EE /* HomeRouter.swift */,
-				07B247582B1830AA008049EE /* HomeNetworkingWorker.swift */,
 				07B2475B2B18339D008049EE /* HomeModel.swift */,
+				07B247582B1830AA008049EE /* HomeNetworkingWorker.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -180,6 +182,7 @@
 				07480FCB2B18B8E0000615E6 /* DetailConfigurator.swift */,
 				07480FD62B18E083000615E6 /* DetailRouter.swift */,
 				07480FD02B18DCB7000615E6 /* DetailModel.swift */,
+				07C7F40A2B19D24D00F586EC /* DetailTableViewCell.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				07480FD72B18E083000615E6 /* DetailRouter.swift in Sources */,
 				07480FD32B18DD9C000615E6 /* DetailInteractor.swift in Sources */,
 				07480FD52B18DDB5000615E6 /* DetailPresenter.swift in Sources */,
+				07C7F40B2B19D24D00F586EC /* DetailTableViewCell.swift in Sources */,
 				07C7F4052B197DED00F586EC /* UserInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,10 +423,12 @@
 				DEVELOPMENT_TEAM = YJF2RZ2K47;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UIKitVIPStudy/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Github Users";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -449,10 +455,12 @@
 				DEVELOPMENT_TEAM = YJF2RZ2K47;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UIKitVIPStudy/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Github Users";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

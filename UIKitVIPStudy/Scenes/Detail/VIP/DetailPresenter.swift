@@ -12,7 +12,7 @@ import Foundation
 typealias DetailScenePresenterInput = DetailSceneInteractorOutput
 
 protocol DetailScenePresenterOutput: AnyObject {
-    func displayUserDetail(user: DetailModel.DisplayUserInfoDetails.ViewModel)
+    func displayUserDetail(viewModel: DetailModel.DisplayUserInfoDetails.ViewModel)
 }
 
 //MARK: - 속성 선언
@@ -39,18 +39,26 @@ extension DetailPresenter {
 
 extension DetailPresenter: DetailScenePresenterInput {
     
-    func convertUserInfoDetails(user: UserInfo?) {
-        guard let user = user else { return }
+    /// 이전 화면에서 받아온 깃허브 사용자 정보를
+    /// ViewModel 포맷으로 변환 후 ViewController에 전달하기
+    /// - Parameter userInfo: 이전 화면에서 받아온 깃허브 사용자 정보 데이터
+    func convertResponseFormat(userInfoDetails: UserInfo?) {
+        guard let userInfoDetails = userInfoDetails else { return }
         
-        var cellData = [String]()
-        cellData.append("아이디는 \(user.id) 입니다.")
-        cellData.append("이름은 \(user.name) 입니다.")
-        cellData.append("소개말은 '\(user.bio)' 입니다.")
-        cellData.append("현재 위치는 \(user.location) 입니다.")
+        let tableViewData = [
+            ("아이디", userInfoDetails.id),
+            ("이름", userInfoDetails.name),
+            ("소개", userInfoDetails.bio),
+            ("위치", userInfoDetails.location),
+            ("팔로워", "\(userInfoDetails.followers)명"),
+            ("팔로잉", "\(userInfoDetails.following)명"),
+            ("공개 Repository", "\(userInfoDetails.publicRepositories)개"),
+            ("공개 Gist", "\(userInfoDetails.publicGists)개"),
+        ]
         
-        let viewModel = DetailModel.DisplayUserInfoDetails.ViewModel(details: cellData)
+        let viewModel = DetailModel.DisplayUserInfoDetails.ViewModel(tableViewData: tableViewData)
         
-        self.viewController?.displayUserDetail(user: viewModel)
+        self.viewController?.displayUserDetail(viewModel: viewModel)
     }
     
 }

@@ -44,7 +44,7 @@ extension HomeNetworkingWorker: HomeSceneNetworkingLogic {
     func startFetching(with request: HomeModel.FetchUserInfo.Request) async throws -> HomeModel.FetchUserInfo.Response {
 #if DEBUG
         // 일부러 네트워킹 시간을 지연시켜 봄
-        sleep(2)
+        sleep(1)
 #endif
         
         // 1. url 문자열을 이용해 URL 오브젝트 생성

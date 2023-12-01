@@ -13,12 +13,7 @@ import UIKit
 protocol HomeSceneRoutingLogic {
     var viewController: HomeViewController? { get }
     
-    func navigateToDetail(animated: Bool)
-}
-
-/// 특정 ViewController로 데이터를 전달하기 위해 준수해야 하는 프로토콜
-protocol HomeSceneDataPassingLogic {
-    
+    func navigateToDetail(dataToPass: UserInfo, animated: Bool)
 }
 
 //MARK: - 속성 선언
@@ -38,12 +33,12 @@ extension HomeRouter {
     
 }
 
-//MARK: - Routing 로직 프로토콜 메서드 구현
+//MARK: - Routing 로직 구현
 
 extension HomeRouter: HomeSceneRoutingLogic {
     
-    func navigateToDetail(animated: Bool) {
-        let detailViewController = DetailViewController()
+    func navigateToDetail(dataToPass: UserInfo, animated: Bool) {
+        let detailViewController = DetailViewController(dataToReceive: dataToPass)
         self.viewController?.navigationController?.pushViewController(detailViewController, animated: animated)
     }
     

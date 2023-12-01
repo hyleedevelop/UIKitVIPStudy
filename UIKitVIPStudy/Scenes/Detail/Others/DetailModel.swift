@@ -12,8 +12,11 @@ struct DetailModel {
     
     /// 깃허브 사용자의 상세 정보를 표시할 때 사용하는 모델
     struct DisplayUserInfoDetails {
+        struct Request {
+            let data: UserInfo?
+        }
         struct ViewModel {
-            let details: [String]
+            let tableViewData: [(String, String)]
         }
     }
     
