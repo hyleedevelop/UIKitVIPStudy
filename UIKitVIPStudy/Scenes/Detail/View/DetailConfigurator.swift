@@ -13,8 +13,8 @@ final class DetailConfigurator {
     static let shared = DetailConfigurator()
     private init() {}
     
-    /// Router, ViewController, Interactor, Presenter를 서로 연결
-    /// - Parameter viewController: ViewController
+    /// **Router**, **ViewController**, **Interactor**, **Presenter**를 서로 연결
+    /// - Parameter viewController: **ViewController**
     func configure(viewController: DetailViewController) {
         let router = DetailRouter(viewController: viewController)
         let presenter = DetailPresenter(viewController: viewController)

@@ -9,25 +9,25 @@ import Foundation
 
 //MARK: - 프로토콜 선언
 
-/// Viewcontroller -> Interactor 통신을 위해 준수해야 하는 프로토콜
-typealias DetailSceneInteractorInput = DetailSceneViewControllerOutput
+/// **Viewcontroller -> **Interactor** 통신을 위해 준수해야 하는 프로토콜
+typealias DetailInteractorInput = DetailViewControllerOutput
 
-/// Interactor -> Presenter 통신을 위해 준수해야 하는 프로토콜
-protocol DetailSceneInteractorOutput: AnyObject {
+/// **Interactor** -> **Presenter** 통신을 위해 준수해야 하는 프로토콜
+protocol DetailInteractorOutput: AnyObject {
     func convertResponseFormat(userInfoDetails: UserInfo?)
 }
 
 //MARK: - 속성 선언
 
+/// 화면의 비즈니스 로직을 담당하는 객체
 final class DetailInteractor {
     
-    var presenter: DetailSceneInteractorOutput?
-//    var user: HomeModel.Response.User?
+    var presenter: DetailInteractorOutput?
     
-    /// ListInteractor 인스턴스를 생성
+    /// Interactor 인스턴스를 생성
     /// - Parameters:
     ///   - presenter: interactor의 output
-    init(presenter: DetailSceneInteractorOutput) {
+    init(presenter: DetailInteractorOutput) {
         self.presenter = presenter
     }
     
@@ -41,8 +41,9 @@ extension DetailInteractor {
 
 //MARK: - ViewController -> Interactor 통신
 
-extension DetailInteractor: DetailSceneInteractorInput {
+extension DetailInteractor: DetailInteractorInput {
 
+    /// Presenter에게 사용자 정보 데이터 전달
     func passUserInfoToPresenter(request: DetailModel.DisplayUserInfoDetails.Request) {
         let userInfoDetails = request.data
         self.presenter?.convertResponseFormat(userInfoDetails: userInfoDetails)

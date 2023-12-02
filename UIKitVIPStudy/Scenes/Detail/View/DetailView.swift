@@ -9,12 +9,14 @@ import UIKit
 
 //MARK: - 프로토콜 선언
 
+/// **View** -> **ViewController** 통신을 위해 준수해야 하는 프로토콜
 protocol DetailViewDelegate: AnyObject {
     func visitButtonTapped()
 }
 
 //MARK: - 속성 선언 및 초기화
 
+/// 화면을 구성하는 객체
 class DetailView: UIView {
     
     /// 깃허브 페이지 이동 버튼

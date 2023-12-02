@@ -10,31 +10,37 @@ import UIKit
 //MARK: - 프로토콜 선언
 
 /// **Presenter** -> **ViewController** 통신을 위해 준수해야 하는 프로토콜
-typealias DetailSceneViewControllerInput = DetailScenePresenterOutput
+typealias DetailViewControllerInput = DetailPresenterOutput
 
 /// **ViewController** -> **Interactor** 통신을 위해 준수해야 하는 프로토콜
-protocol DetailSceneViewControllerOutput: AnyObject {
+protocol DetailViewControllerOutput: AnyObject {
     func passUserInfoToPresenter(request: DetailModel.DisplayUserInfoDetails.Request)
+}
+
+/// **ViewController** -> **Router** 통신을 위해 준수해야 하는 프로토콜
+protocol DetailRoutingLogic {
+    var viewController: DetailViewController? { get }
 }
 
 //MARK: - 속성 선언 및 초기화
 
+/// 사용자로부터 입력을 받고 화면 표시를 담당하는 객체
 final class DetailViewController: UIViewController {
     
-    // 이전 화면에서 전달받을 데이터 (Router에 의해 초기화 됨)
+    /// 이전 화면에서 전달받을 데이터
     var dataToReceive: UserInfo
     
-    // View
+    /// **View**
     private let detailView = DetailView()
     
-    // Model
+    /// **Model**
     private var viewModel: DetailModel.DisplayUserInfoDetails.ViewModel?
     
-    // Router (Configurator에 의해 초기화 됨)
-    var router: DetailSceneRoutingLogic!
+    /// **Router** (Configurator에 의해 초기화 됨)
+    var router: DetailRoutingLogic!
     
-    // Interactor (Configurator에 의해 초기화 됨)
-    var interactor: DetailSceneViewControllerOutput!
+    /// **Interactor** (Configurator에 의해 초기화 됨)
+    var interactor: DetailViewControllerOutput!
     
     /// ViewController의 인스턴스를 생성
     /// - Parameters:
@@ -64,6 +70,7 @@ extension DetailViewController {
         self.view = detailView
     }
     
+    /// **View** 초기화 이후 실행할 작업
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -73,7 +80,7 @@ extension DetailViewController {
         self.interactor.passUserInfoToPresenter(request: request)
     }
     
-    /// 뷰 설정
+    /// **View** 설정
     private func setupView() {
         // View의 배경 색상 설정
         self.view.backgroundColor = .systemBackground
@@ -93,7 +100,7 @@ extension DetailViewController {
 
 //MARK: - Presenter -> ViewController 통신
 
-extension DetailViewController: DetailSceneViewControllerInput {
+extension DetailViewController: DetailViewControllerInput {
 
     /// TableView에 사용자 상세 정보 표시
     func displayUserDetail(viewModel: DetailModel.DisplayUserInfoDetails.ViewModel) {
@@ -139,10 +146,9 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension DetailViewController: DetailViewDelegate {
     
+    /// 깃허브 로고 버튼이 눌러졌을 때 실행할 내용
     func visitButtonTapped() {
-        print("https://github.com/\(self.dataToReceive.id)")
         if let url = URL(string: "https://github.com/\(self.dataToReceive.id)") {
-            print("here")
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:])
             }

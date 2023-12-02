@@ -7,16 +7,9 @@
 
 import Foundation
 
-//MARK: - 프로토콜 선언
-
-protocol DetailSceneRoutingLogic {
-    var viewController: DetailViewController? { get }
-    
-    //func navigateToDetail(animated: Bool)
-}
-
 //MARK: - 속성 선언
 
+/// 화면 전환을 담당하는 객체
 final class DetailRouter {
     
     weak var viewController: DetailViewController?
@@ -34,10 +27,6 @@ extension DetailRouter {
 
 //MARK: - Routing 로직 프로토콜 메서드 구현
 
-extension DetailRouter: DetailSceneRoutingLogic {
-    
-    //func navigateToDetail(animated: Bool) {
-    //
-    //}
+extension DetailRouter: DetailRoutingLogic {
     
 }

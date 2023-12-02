@@ -18,13 +18,6 @@ enum NetworkingError: Error {
     case invalidData
 }
 
-//MARK: - 프로토콜 선언
-
-/// Networking 로직을 수행하기 위해 준수해야 하는 프로토콜
-protocol HomeSceneNetworkingLogic {
-    func startFetching(with request: HomeModel.FetchUserInfo.Request) async throws -> HomeModel.FetchUserInfo.Response
-}
-
 //MARK: - 속성 선언
 
 final class HomeNetworkingWorker {
@@ -39,7 +32,7 @@ extension HomeNetworkingWorker {
 
 //MARK: - 입력 프로토콜 메서드 구현
 
-extension HomeNetworkingWorker: HomeSceneNetworkingLogic {
+extension HomeNetworkingWorker: HomeNetworkingLogic {
     
     func startFetching(with request: HomeModel.FetchUserInfo.Request) async throws -> HomeModel.FetchUserInfo.Response {
 #if DEBUG

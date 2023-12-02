@@ -69,6 +69,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		073FFC672B1AF7BF00894580 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				07B247542B182D63008049EE /* HomeInteractor.swift */,
+				07B247582B1830AA008049EE /* HomeNetworkingWorker.swift */,
+				07B2475B2B18339D008049EE /* HomeModel.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		073FFC682B1AF80E00894580 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				07480FD42B18DDB5000615E6 /* DetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		07480FCD2B18BDD0000615E6 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,8 +138,9 @@
 		07B2474E2B182AC0008049EE /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				07C7F4062B19AB2F00F586EC /* VIP */,
-				07C7F4072B19AB3E00F586EC /* Others */,
+				07C7F4062B19AB2F00F586EC /* View */,
+				073FFC672B1AF7BF00894580 /* Interactor */,
+				07C7F4072B19AB3E00F586EC /* Presenter */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -129,8 +148,9 @@
 		07B2474F2B182AC4008049EE /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				07C7F4082B19AB7500F586EC /* VIP */,
-				07C7F4092B19AB7A00F586EC /* Others */,
+				07C7F4082B19AB7500F586EC /* View */,
+				07C7F4092B19AB7A00F586EC /* Interactor */,
+				073FFC682B1AF80E00894580 /* Presenter */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -143,48 +163,44 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		07C7F4062B19AB2F00F586EC /* VIP */ = {
-			isa = PBXGroup;
-			children = (
-				07B247612B184897008049EE /* HomeView.swift */,
-				07B247502B182AE9008049EE /* HomeViewController.swift */,
-				07B247542B182D63008049EE /* HomeInteractor.swift */,
-				07B247562B182DAA008049EE /* HomePresenter.swift */,
-			);
-			path = VIP;
-			sourceTree = "<group>";
-		};
-		07C7F4072B19AB3E00F586EC /* Others */ = {
+		07C7F4062B19AB2F00F586EC /* View */ = {
 			isa = PBXGroup;
 			children = (
 				07B2475F2B1841AA008049EE /* HomeConfigurator.swift */,
 				07B2475D2B183450008049EE /* HomeRouter.swift */,
-				07B2475B2B18339D008049EE /* HomeModel.swift */,
-				07B247582B1830AA008049EE /* HomeNetworkingWorker.swift */,
+				07B247502B182AE9008049EE /* HomeViewController.swift */,
+				07B247612B184897008049EE /* HomeView.swift */,
 			);
-			path = Others;
+			path = View;
 			sourceTree = "<group>";
 		};
-		07C7F4082B19AB7500F586EC /* VIP */ = {
+		07C7F4072B19AB3E00F586EC /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				07480FC92B18B65A000615E6 /* DetailView.swift */,
-				07B247522B182AEE008049EE /* DetailViewController.swift */,
-				07480FD22B18DD9C000615E6 /* DetailInteractor.swift */,
-				07480FD42B18DDB5000615E6 /* DetailPresenter.swift */,
+				07B247562B182DAA008049EE /* HomePresenter.swift */,
 			);
-			path = VIP;
+			path = Presenter;
 			sourceTree = "<group>";
 		};
-		07C7F4092B19AB7A00F586EC /* Others */ = {
+		07C7F4082B19AB7500F586EC /* View */ = {
 			isa = PBXGroup;
 			children = (
 				07480FCB2B18B8E0000615E6 /* DetailConfigurator.swift */,
 				07480FD62B18E083000615E6 /* DetailRouter.swift */,
-				07480FD02B18DCB7000615E6 /* DetailModel.swift */,
+				07B247522B182AEE008049EE /* DetailViewController.swift */,
+				07480FC92B18B65A000615E6 /* DetailView.swift */,
 				07C7F40A2B19D24D00F586EC /* DetailTableViewCell.swift */,
 			);
-			path = Others;
+			path = View;
+			sourceTree = "<group>";
+		};
+		07C7F4092B19AB7A00F586EC /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				07480FD22B18DD9C000615E6 /* DetailInteractor.swift */,
+				07480FD02B18DCB7000615E6 /* DetailModel.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -423,7 +439,7 @@
 				DEVELOPMENT_TEAM = YJF2RZ2K47;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UIKitVIPStudy/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Github Users";
+				INFOPLIST_KEY_CFBundleDisplayName = "깃허브 사용자 검색";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -455,7 +471,7 @@
 				DEVELOPMENT_TEAM = YJF2RZ2K47;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UIKitVIPStudy/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Github Users";
+				INFOPLIST_KEY_CFBundleDisplayName = "깃허브 사용자 검색";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

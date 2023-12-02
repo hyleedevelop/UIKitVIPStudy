@@ -9,6 +9,7 @@ import UIKit
 
 //MARK: - 프로토콜 선언
 
+/// **View** -> **ViewController** 통신을 위해 준수해야 하는 프로토콜
 protocol HomeViewDelegate: AnyObject {
     func searchButtonTapped(input: String)
     func seeDetailsButtonTapped()
@@ -16,6 +17,7 @@ protocol HomeViewDelegate: AnyObject {
 
 //MARK: - 속성 선언 및 초기화
 
+/// 화면을 구성하는 객체
 class HomeView: UIView {
     
     /// 아이디 텍스트필드

@@ -7,17 +7,9 @@
 
 import UIKit
 
-//MARK: - 프로토콜 선언
-
-/// Routing 로직을 수행하기 위해 준수해야 하는 프로토콜
-protocol HomeSceneRoutingLogic {
-    var viewController: HomeViewController? { get }
-    
-    func navigateToDetail(dataToPass: UserInfo, animated: Bool)
-}
-
 //MARK: - 속성 선언
 
+/// 화면 전환을 담당하는 객체
 final class HomeRouter {
     
     weak var viewController: HomeViewController?
@@ -35,7 +27,7 @@ extension HomeRouter {
 
 //MARK: - Routing 로직 구현
 
-extension HomeRouter: HomeSceneRoutingLogic {
+extension HomeRouter: HomeRoutingLogic {
     
     func navigateToDetail(dataToPass: UserInfo, animated: Bool) {
         let detailViewController = DetailViewController(dataToReceive: dataToPass)

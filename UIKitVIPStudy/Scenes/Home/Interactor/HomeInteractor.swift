@@ -9,20 +9,26 @@ import Foundation
 
 //MARK: - 프로토콜 선언
 
-/// Viewcontroller -> Interactor 통신을 위해 준수해야 하는 프로토콜
-typealias HomeSceneInteractorInput = HomeSceneViewControllerOutput
+/// **Viewcontroller** -> **Interactor** 통신을 위해 준수해야 하는 프로토콜
+typealias HomeInteractorInput = HomeViewControllerOutput
 
-/// Interactor -> Presenter 통신을 위해 준수해야 하는 프로토콜
-protocol HomeSceneInteractorOutput: AnyObject {
+/// **Interactor** -> **Presenter** 통신을 위해 준수해야 하는 프로토콜
+protocol HomeInteractorOutput: AnyObject {
     func convertResponseFormat(response: HomeModel.FetchUserInfo.Response?)
     func passFailStatus()
 }
 
+/// Networking 로직을 수행하기 위해 준수해야 하는 프로토콜
+protocol HomeNetworkingLogic {
+    func startFetching(with request: HomeModel.FetchUserInfo.Request) async throws -> HomeModel.FetchUserInfo.Response
+}
+
 //MARK: - 속성 선언
 
+/// 화면의 비즈니스 로직을 담당하는 객체
 final class HomeInteractor {
     
-    var presenter: HomeSceneInteractorOutput?
+    var presenter: HomeInteractorOutput?
     let networkingWorker: HomeNetworkingWorker
     
     var response: HomeModel.FetchUserInfo.Response?
@@ -31,7 +37,7 @@ final class HomeInteractor {
     /// - Parameters:
     ///   - presenter: Interactor와 통신하는 Presenter
     ///   - networkingWorker: 사용자 정보를 네트워킹으로 가져오기 위한 Worker
-    init(presenter: HomeSceneInteractorOutput, networkingWorker: HomeNetworkingWorker = HomeNetworkingWorker()) {
+    init(presenter: HomeInteractorOutput, networkingWorker: HomeNetworkingWorker = HomeNetworkingWorker()) {
         self.presenter = presenter
         self.networkingWorker = networkingWorker
     }
@@ -46,7 +52,7 @@ extension HomeInteractor {
 
 //MARK: - ViewController -> Interactor 통신
 
-extension HomeInteractor: HomeSceneInteractorInput {
+extension HomeInteractor: HomeInteractorInput {
     
     /// 네트워킹을 통해 깃허브 사용자 정보를 비동기적으로 가져오기
     func fetchUserInfo(request: HomeModel.FetchUserInfo.Request) {

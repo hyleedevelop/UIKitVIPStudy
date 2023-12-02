@@ -13,8 +13,8 @@ final class HomeConfigurator {
     static let shared = HomeConfigurator()
     private init() {}
     
-    /// Router, ViewController, Interactor, Presenter를 서로 연결
-    /// - Parameter viewController: ViewController
+    /// **Router**, **ViewController**, **Interactor**, **Presenter**를 서로 연결
+    /// - Parameter viewController: **ViewController**
     func configure(viewController: HomeViewController) {
         let router = HomeRouter(viewController: viewController)
         let presenter = HomePresenter(viewController: viewController)
