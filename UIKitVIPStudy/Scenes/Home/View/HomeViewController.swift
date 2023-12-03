@@ -29,7 +29,7 @@ protocol HomeRoutingLogic {
 //MARK: - 속성 선언 및 초기화
 
 /// 사용자로부터 입력을 받고 화면 표시를 담당하는 객체
-final class HomeViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     /// 다음 화면으로 전달할 데이터
     var dataToPass: UserInfo!

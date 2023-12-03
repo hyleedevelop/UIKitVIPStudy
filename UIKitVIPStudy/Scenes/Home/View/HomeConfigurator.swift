@@ -8,7 +8,7 @@
 import Foundation
 
 /// VIP 아키텍처의 각 요소를 연결하는 역할을 맡는 싱글톤 객체
-final class HomeConfigurator {
+class HomeConfigurator {
     
     static let shared = HomeConfigurator()
     private init() {}

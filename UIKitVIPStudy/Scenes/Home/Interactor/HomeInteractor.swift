@@ -23,13 +23,13 @@ protocol HomeNetworkingLogic {
     func startFetching(with request: HomeModel.FetchUserInfo.Request) async throws -> HomeModel.FetchUserInfo.Response
 }
 
-//MARK: - 속성 선언
+//MARK: - 속성 선언 및 초기화
 
 /// 화면의 비즈니스 로직을 담당하는 객체
-final class HomeInteractor {
+class HomeInteractor {
     
     var presenter: HomeInteractorOutput?
-    let networkingWorker: HomeNetworkingWorker
+    let networkingWorker: HomeNetworkingLogic
     
     var response: HomeModel.FetchUserInfo.Response?
     
@@ -37,16 +37,10 @@ final class HomeInteractor {
     /// - Parameters:
     ///   - presenter: Interactor와 통신하는 Presenter
     ///   - networkingWorker: 사용자 정보를 네트워킹으로 가져오기 위한 Worker
-    init(presenter: HomeInteractorOutput, networkingWorker: HomeNetworkingWorker = HomeNetworkingWorker()) {
+    init(presenter: HomeInteractorOutput, networkingWorker: HomeNetworkingLogic = HomeNetworkingWorker()) {
         self.presenter = presenter
         self.networkingWorker = networkingWorker
     }
-    
-}
-
-//MARK: - 내부 메서드 구현
-
-extension HomeInteractor {
     
 }
 

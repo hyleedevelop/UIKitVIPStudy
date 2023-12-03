@@ -85,7 +85,7 @@ extension DetailTableViewCell {
 
 extension DetailTableViewCell {
     
-    /// 레이블 내용을 ViewController에서 전달받아 설정
+    /// 레이블 내용을 **ViewController**에서 전달받아 설정
     func setupCellUI(title: String, description: String) {
         self.titleLabel.text = title
         self.descriptionLabel.text = description

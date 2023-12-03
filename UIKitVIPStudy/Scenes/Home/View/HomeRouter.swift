@@ -7,22 +7,17 @@
 
 import UIKit
 
-//MARK: - 속성 선언
+//MARK: - 속성 선언 및 초기화
 
-/// 화면 전환을 담당하는 객체
-final class HomeRouter {
+/// 화면 전환을 담당하는 클래스
+class HomeRouter {
     
+    /// **ViewController**
     weak var viewController: HomeViewController?
     
     init(viewController: HomeViewController) {
         self.viewController = viewController
     }
-}
-
-//MARK: - 내부 메서드 구현
-
-extension HomeRouter {
-    
 }
 
 //MARK: - Routing 로직 구현

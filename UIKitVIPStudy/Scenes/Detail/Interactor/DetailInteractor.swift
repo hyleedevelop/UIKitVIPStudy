@@ -17,7 +17,7 @@ protocol DetailInteractorOutput: AnyObject {
     func convertResponseFormat(userInfoDetails: UserInfo?)
 }
 
-//MARK: - 속성 선언
+//MARK: - 속성 선언 및 초기화
 
 /// 화면의 비즈니스 로직을 담당하는 객체
 final class DetailInteractor {
@@ -30,12 +30,6 @@ final class DetailInteractor {
     init(presenter: DetailInteractorOutput) {
         self.presenter = presenter
     }
-    
-}
-
-//MARK: - 내부 메서드 구현
-
-extension DetailInteractor {
     
 }
 

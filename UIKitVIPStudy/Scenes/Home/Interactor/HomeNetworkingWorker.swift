@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// https://api.github.com/users/[id]
+/// https://api.github.com/users/[사용자계정]
 /// 깃허브에서 사용자 정보를 불러오는 API
 
 //MARK: - 에러 타입 선언
@@ -18,19 +18,13 @@ enum NetworkingError: Error {
     case invalidData
 }
 
-//MARK: - 속성 선언
+//MARK: - 속성 선언 및 초기화
 
 final class HomeNetworkingWorker {
     
 }
 
-//MARK: - 내부 메서드 구현
-
-extension HomeNetworkingWorker {
-    
-}
-
-//MARK: - 입력 프로토콜 메서드 구현
+//MARK: - Interactor -> NetworkingWorker 통신
 
 extension HomeNetworkingWorker: HomeNetworkingLogic {
     
@@ -68,4 +62,3 @@ extension HomeNetworkingWorker: HomeNetworkingLogic {
     }
     
 }
-

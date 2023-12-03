@@ -22,7 +22,7 @@ protocol HomePresenterOutput: AnyObject {
 //MARK: - 속성 선언
 
 /// 화면에 표시할 데이터를 담당하는 객체
-final class HomePresenter {
+class HomePresenter {
     
     weak var viewController: HomePresenterOutput?
     
@@ -45,7 +45,7 @@ extension HomePresenter {
 extension HomePresenter: HomePresenterInput {
     
     /// 네트워킹을 통해 받아온 깃허브 사용자 정보를
-    /// 다른 포맷으로 변환 후 ViewController에 전달하기
+    /// 뷰모델 포맷으로 변환 후 **ViewController**에 전달
     /// (현재 화면에 표시할 데이터 + 다음 화면에 넘길 데이터)
     /// - Parameter userInfo: 네트워킹을 통해 받아온 깃허브 사용자 정보 데이터
     func convertResponseFormat(response: HomeModel.FetchUserInfo.Response?) {
@@ -75,6 +75,7 @@ extension HomePresenter: HomePresenterInput {
         self.viewController?.prepareDataToPass(dataToPass: dataToPass)
     }
     
+    /// 네트워킹이 실패해서 뷰모델 포맷으로 변환할 수 없는 상태임을 **ViewController**에 전달
     func passFailStatus() {
         self.viewController?.displayFailStatus()
     }
