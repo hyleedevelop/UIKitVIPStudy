@@ -20,6 +20,8 @@ protocol DetailViewControllerOutput: AnyObject {
 /// **ViewController** -> **Router** 통신을 위해 준수해야 하는 프로토콜
 protocol DetailRoutingLogic {
     var viewController: DetailViewController? { get }
+    
+    func navigateToGithub(userID: String)
 }
 
 //MARK: - 속성 선언 및 초기화
@@ -75,9 +77,7 @@ extension DetailViewController {
         super.viewDidLoad()
 
         self.setupView()
-        
-        let request = DetailModel.DisplayUserInfoDetails.Request(data: self.dataToReceive)
-        self.interactor.passUserInfoToPresenter(request: request)
+        self.dataReceivedFromPreviousScene()
     }
     
     /// **View** 설정
@@ -94,6 +94,12 @@ extension DetailViewController {
         // TableView의 대리자 설정
         self.detailView.tableView.delegate = self
         self.detailView.tableView.dataSource = self
+    }
+    
+    /// 이전 화면에서 받은 데이터를 현재 화면에 표시할 수 있도록 가공하기 위해 **Presenter**에 전달
+    func dataReceivedFromPreviousScene() {
+        let request = DetailModel.DisplayUserInfoDetails.Request(data: self.dataToReceive)
+        self.interactor.passUserInfoToPresenter(request: request)
     }
     
 }
@@ -148,11 +154,7 @@ extension DetailViewController: DetailViewDelegate {
     
     /// 깃허브 로고 버튼이 눌러졌을 때 실행할 내용
     func visitButtonTapped() {
-        if let url = URL(string: "https://github.com/\(self.dataToReceive.id)") {
-            if UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url, options: [:])
-            }
-        }
+        self.router.navigateToGithub(userID: self.dataToReceive.id)
     }
     
 }

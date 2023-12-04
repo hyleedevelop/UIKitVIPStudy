@@ -132,7 +132,7 @@ extension HomeViewController: HomeViewDelegate {
     
     /// 상세 정보 보기 버튼이 눌러졌을 때 실행할 내용
     func seeDetailsButtonTapped() {
-        self.router?.navigateToDetail(dataToPass: self.dataToPass, animated: true)
+        self.router.navigateToDetail(dataToPass: self.dataToPass, animated: true)
     }
     
 }

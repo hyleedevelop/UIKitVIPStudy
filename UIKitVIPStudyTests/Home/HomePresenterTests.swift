@@ -26,10 +26,6 @@ final class HomePresenterTests: XCTestCase {
     /// `displayUserProfile` 메서드를 정상적으로 호출하는지에 대한 테스트
     func testPresenterShouldAskViewControllerTodisplayUserProfile() {
         // Given
-        /// 가짜 ViewController
-        let mockViewController = MockHomeViewController()
-        /// 실제 프로젝트에 사용할 Presenter (검증 대상)
-        let presenter = HomePresenter(viewController: mockViewController)
         /// 네트워킹 요청 결과로 받아오는 데이터의 **Model**
         let response = HomeModel.FetchUserInfo.Response(
             avatarUrl: "https://avatars.githubusercontent.com/u/115394709?v=4",
@@ -42,6 +38,10 @@ final class HomePresenterTests: XCTestCase {
             followers: 1,
             following: 3
         )
+        /// 가짜 **ViewController**
+        let mockViewController = MockHomeViewController()
+        /// 실제 프로젝트에 사용할 **Presenter** (검증 대상)
+        let presenter = HomePresenter(viewController: mockViewController)
         
         // When
         presenter.convertResponseFormat(response: response)
@@ -54,10 +54,6 @@ final class HomePresenterTests: XCTestCase {
     /// **ViewController**의 `prepareDataToPass` 메서드를 정상적으로 호출하는지에 대한 테스트
     func testPresenterShouldAskViewControllerToprepareDataToPass() {
         // Given
-        /// 가짜 ViewController
-        let mockViewController = MockHomeViewController()
-        /// 실제 프로젝트에 사용할 Presenter (검증 대상)
-        let presenter = HomePresenter(viewController: mockViewController)
         /// 네트워킹 요청 결과로 받아오는 데이터의 **Model**
         let response = HomeModel.FetchUserInfo.Response(
             avatarUrl: "https://avatars.githubusercontent.com/u/115394709?v=4",
@@ -70,6 +66,10 @@ final class HomePresenterTests: XCTestCase {
             followers: 1,
             following: 3
         )
+        /// 가짜 **ViewController**
+        let mockViewController = MockHomeViewController()
+        /// 실제 프로젝트에 사용할 **Presenter** (검증 대상)
+        let presenter = HomePresenter(viewController: mockViewController)
         
         // When
         presenter.convertResponseFormat(response: response)
@@ -82,9 +82,9 @@ final class HomePresenterTests: XCTestCase {
     /// `DisplayFailStatus` 메서드를 정상적으로 호출하는지에 대한 테스트
     func testPresenterShouldAskViewControllerToDisplayFailStatus() {
         // Given
-        /// 가짜 ViewController
+        /// 가짜 **ViewController**
         let mockViewController = MockHomeViewController()
-        /// 실제 프로젝트에 사용할 Presenter (검증 대상)
+        /// 실제 프로젝트에 사용할 **Presenter** (검증 대상)
         let presenter = HomePresenter(viewController: mockViewController)
         
         // When
@@ -107,7 +107,7 @@ final class MockHomeViewController: HomePresenterOutput {
     
     // **Presenter** -> **ViewController** 통신을 위해 구현해야 하는 메서드 목록
     func displayUserProfile(viewModel: HomeModel.FetchUserInfo.ViewModel) {
-        isDisplayUserProfileCalled = true
+        self.isDisplayUserProfileCalled = true
     }
     
     func displayFailStatus() {

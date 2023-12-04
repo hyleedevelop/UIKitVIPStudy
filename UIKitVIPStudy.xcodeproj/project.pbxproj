@@ -14,6 +14,9 @@
 		07480FD32B18DD9C000615E6 /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07480FD22B18DD9C000615E6 /* DetailInteractor.swift */; };
 		07480FD52B18DDB5000615E6 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07480FD42B18DDB5000615E6 /* DetailPresenter.swift */; };
 		07480FD72B18E083000615E6 /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07480FD62B18E083000615E6 /* DetailRouter.swift */; };
+		078908042B1D58CE00BB6007 /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078908032B1D58CE00BB6007 /* DetailViewControllerTests.swift */; };
+		078908062B1D717F00BB6007 /* DetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078908052B1D717F00BB6007 /* DetailInteractorTests.swift */; };
+		078908082B1D7E3400BB6007 /* DetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078908072B1D7E3400BB6007 /* DetailPresenterTests.swift */; };
 		07B2473A2B182A6B008049EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B247392B182A6B008049EE /* AppDelegate.swift */; };
 		07B2473C2B182A6B008049EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2473B2B182A6B008049EE /* SceneDelegate.swift */; };
 		07B247432B182A6C008049EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07B247422B182A6C008049EE /* Assets.xcassets */; };
@@ -53,6 +56,9 @@
 		07480FD22B18DD9C000615E6 /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
 		07480FD42B18DDB5000615E6 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		07480FD62B18E083000615E6 /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
+		078908032B1D58CE00BB6007 /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
+		078908052B1D717F00BB6007 /* DetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractorTests.swift; sourceTree = "<group>"; };
+		078908072B1D7E3400BB6007 /* DetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenterTests.swift; sourceTree = "<group>"; };
 		07B247362B182A6B008049EE /* UIKitVIPStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitVIPStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B247392B182A6B008049EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07B2473B2B182A6B008049EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -254,6 +260,9 @@
 		07FC73DA2B1CC1FE00088F92 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				078908032B1D58CE00BB6007 /* DetailViewControllerTests.swift */,
+				078908052B1D717F00BB6007 /* DetailInteractorTests.swift */,
+				078908072B1D7E3400BB6007 /* DetailPresenterTests.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -386,9 +395,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				07FC73D82B1CC1DF00088F92 /* HomeNetworkingWorkerTests.swift in Sources */,
+				078908042B1D58CE00BB6007 /* DetailViewControllerTests.swift in Sources */,
+				078908082B1D7E3400BB6007 /* DetailPresenterTests.swift in Sources */,
 				07FC73CD2B1C67FE00088F92 /* HomeInteractorTests.swift in Sources */,
 				07FC73D62B1CC19900088F92 /* HomeViewControllerTests.swift in Sources */,
 				07FC73D42B1CB2B500088F92 /* HomePresenterTests.swift in Sources */,
+				078908062B1D717F00BB6007 /* DetailInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,7 +555,7 @@
 				DEVELOPMENT_TEAM = YJF2RZ2K47;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UIKitVIPStudy/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "깃허브 사용자 검색";
+				INFOPLIST_KEY_CFBundleDisplayName = UIKitVIPStudy;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -575,7 +587,7 @@
 				DEVELOPMENT_TEAM = YJF2RZ2K47;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UIKitVIPStudy/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "깃허브 사용자 검색";
+				INFOPLIST_KEY_CFBundleDisplayName = UIKitVIPStudy;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

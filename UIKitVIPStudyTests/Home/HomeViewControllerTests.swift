@@ -28,24 +28,24 @@ final class HomeViewControllerTests: XCTestCase {
         self.window = nil
     }
     
-    /// **ViewController**가 Router를 정상적으로 참조하는지에 대한 테스트
+    /// **ViewController**가 **Router**를 정상적으로 참조하는지에 대한 테스트
     func testViewControllerShouldInitializeRouter() {
         // Given
-        /// 실제 프로젝트에 사용할 Configurator
+        /// 실제 프로젝트에 사용할 **Configurator**
         let configurator = HomeConfigurator.shared
-        /// 실제 프로젝트에 사용할 ViewController (검증 대상)
+        /// 실제 프로젝트에 사용할 **ViewController** (검증 대상)
         let viewController = HomeViewController(configurator: configurator)
         
         // Then
         XCTAssertNotNil(viewController.router)
     }
     
-    /// **ViewController**가 Interactor를 정상적으로 참조하는지에 대한 테스트
+    /// **ViewController**가 **Interactor**를 정상적으로 참조하는지에 대한 테스트
     func testViewControllerShouldInitializeInteractor() {
         // Given
-        /// 실제 프로젝트에 사용할 Configurator
+        /// 실제 프로젝트에 사용할 **Configurator**
         let configurator = HomeConfigurator.shared
-        /// 실제 프로젝트에 사용할 ViewController (검증 대상)
+        /// 실제 프로젝트에 사용할 **ViewController** (검증 대상)
         let viewController = HomeViewController(configurator: configurator)
         
         // Then
@@ -53,11 +53,11 @@ final class HomeViewControllerTests: XCTestCase {
     }
     
     /// **Router**가 **ViewController**를 정상적으로 참조하는지에 대한 테스트
-    func testViewControllerShould() {
+    func testRouterShouldInitializeViewController() {
         // Given
-        /// 실제 프로젝트에 사용할 Configurator
+        /// 실제 프로젝트에 사용할 **Configurator**
         let configurator = HomeConfigurator.shared
-        /// 실제 프로젝트에 사용할 ViewController (검증 대상)
+        /// 실제 프로젝트에 사용할 **ViewController** (검증 대상)
         let viewController = HomeViewController(configurator: configurator)
         
         // Then
@@ -87,12 +87,6 @@ final class HomeViewControllerTests: XCTestCase {
     /// `navigateToDetail` 메서드를 정상적으로 호출하는지에 대한 테스트
     func testViewControllerShouldAskRouterToNavigateToDetail() {
         // Given
-        /// 가짜 Router
-        let mockRouter = MockHomeRouter()
-        /// 실제 프로젝트에 사용할 Configurator
-        let configurator = HomeConfigurator.shared
-        /// 실제 프로젝트에 사용할 ViewController (검증 대상)
-        let viewController = HomeViewController(configurator: configurator)
         /// 전달할 데이터
         let dataToPass = UserInfo(
             imageURL: "https://avatars.githubusercontent.com/u/115394709?v=4",
@@ -105,6 +99,12 @@ final class HomeViewControllerTests: XCTestCase {
             followers: 1,
             following: 3
         )
+        /// 가짜 **Router**
+        let mockRouter = MockHomeRouter()
+        /// 실제 프로젝트에 사용할 **Configurator**
+        let configurator = HomeConfigurator.shared
+        /// 실제 프로젝트에 사용할 **ViewController** (검증 대상)
+        let viewController = HomeViewController(configurator: configurator)
         
         // When
         viewController.router = mockRouter

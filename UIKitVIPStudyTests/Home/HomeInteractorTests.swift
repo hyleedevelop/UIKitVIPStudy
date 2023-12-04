@@ -26,6 +26,8 @@ final class HomeInteractorTests: XCTestCase {
     /// `fetchUserInfo` 메서드를 정상적으로 호출하는지에 대한 테스트
     func testInteractorShouldAskNetworkingWorkerToFetchUserInfo() {
         // Given
+        /// 네트워킹 요청에 사용할 **Model**
+        let request = HomeModel.FetchUserInfo.Request.init(id: "MockID")
         /// 테스트용 가짜 **NetworkingWorker**
         let mockNetworkingWorker = MockHomeNetworkingWorker()
         /// 테스트용 가짜 **Presenter**
@@ -35,8 +37,6 @@ final class HomeInteractorTests: XCTestCase {
             presenter: mockPresenter,
             networkingWorker: mockNetworkingWorker
         )
-        /// 네트워킹 요청에 사용할 **Model**
-        let request = HomeModel.FetchUserInfo.Request.init(id: "MockID")
         
         // 네트워킹 작업이 오래 걸리기 때문에 동일한 메인큐에서 실행되도록 작성
         // 이렇게 하지 않으면 `self.isFetchingSuccessful = true`가 실행되기 전에
@@ -54,17 +54,17 @@ final class HomeInteractorTests: XCTestCase {
     /// `convertResponseFormatCalled` 메서드를 정상적으로 호출하는지에 대한 테스트
     func testInteractorShouldAskPresenterToConvertResponseFormat() {
         // Given
-        /// 테스트용 가짜 NetworkingWorker
+        /// 네트워킹 요청에 사용할 **Model**
+        let request = HomeModel.FetchUserInfo.Request.init(id: "MockID")
+        /// 테스트용 가짜 **NetworkingWorker**
         let mockNetworkingWorker = MockHomeNetworkingWorker()
-        /// 테스트용 가짜 Presenter
+        /// 테스트용 가짜 **Presenter**
         let mockPresenter = MockHomePresenter()
-        /// 실제 프로젝트에 사용할 Interactor (검증 대상)
+        /// 실제 프로젝트에 사용할 **Interactor** (검증 대상)
         let interactor = HomeInteractor(
             presenter: mockPresenter,
             networkingWorker: mockNetworkingWorker
         )
-        /// 네트워킹 요청에 사용할 **Model**
-        let request = HomeModel.FetchUserInfo.Request.init(id: "MockID")
         
         // 네트워킹 작업이 오래 걸리기 때문에 동일한 메인큐에서 실행되도록 작성
         // 이렇게 하지 않으면 `self.isFetchingSuccessful = true`가 실행되기 전에
@@ -83,17 +83,17 @@ final class HomeInteractorTests: XCTestCase {
     /// `passFailStatus` 메서드를 정상적으로 호출하는지에 대한 테스트
     func testInteractorShouldAskPresenterToPassFailStatus() {
         // Given
-        /// 테스트용 가짜 NetworkingWorker
+        /// 네트워킹 요청에 사용할 **Model**
+        let request = HomeModel.FetchUserInfo.Request.init(id: "MockID")
+        /// 테스트용 가짜 **NetworkingWorker**
         let mockNetworkingWorker = MockHomeNetworkingWorker()
-        /// 테스트용 가짜 Presenter
+        /// 테스트용 가짜 **Presenter**
         let mockPresenter = MockHomePresenter()
-        /// 실제 프로젝트에 사용할 Interactor (검증 대상)
+        /// 실제 프로젝트에 사용할 Interactor** (검증 대상)
         let interactor = HomeInteractor(
             presenter: mockPresenter,
             networkingWorker: mockNetworkingWorker
         )
-        /// 네트워킹 요청에 사용할 **Model**
-        let request = HomeModel.FetchUserInfo.Request.init(id: "MockID")
         
         // 네트워킹 작업이 오래 걸리기 때문에 동일한 메인큐에서 실행되도록 작성
         // 이렇게 하지 않으면 `self.isFetchingSuccessful = true`가 실행되기 전에
