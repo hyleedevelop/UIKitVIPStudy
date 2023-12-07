@@ -182,7 +182,7 @@ final class DetailViewControllerTests: XCTestCase {
 
 //MARK: - MockDetailInteractor 정의
 
-final class MockDetailInteractor: DetailViewControllerOutput {
+final class MockDetailInteractor: DetailBusinessLogic {
     
     // 해당 메서드의 호출 여부
     var isPassUserInfoToPresenterCalled = false

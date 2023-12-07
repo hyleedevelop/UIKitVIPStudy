@@ -54,7 +54,7 @@ final class DetailPresenterTests: XCTestCase {
 
 //MARK: - MockDetailViewController 정의
 
-final class MockDetailViewController: DetailPresenterOutput {
+final class MockDetailViewController: DetailDisplayLogic {
     
     // 해당 메서드의 호출 여부
     var isDisplayUserDetailCalled = false

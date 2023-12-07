@@ -151,7 +151,7 @@ final class MockHomeNetworkingWorker: HomeNetworkingLogic {
 
 //MARK: - MockHomePresenter 정의
 
-final class MockHomePresenter: HomeInteractorOutput {
+final class MockHomePresenter: HomePresentationLogic {
     
     // 해당 메서드의 호출 여부
     var isConvertResponseFormatCalled = false

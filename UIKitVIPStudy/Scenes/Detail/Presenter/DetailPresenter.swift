@@ -9,11 +9,8 @@ import Foundation
 
 //MARK: - 프로토콜 선언
 
-/// **Interactor** -> **Presenter** 통신을 위해 준수해야 하는 프로토콜
-typealias DetailPresenterInput = DetailInteractorOutput
-
 /// **Presenter** -> **ViewController** 통신을 위해 준수해야 하는 프로토콜
-protocol DetailPresenterOutput: AnyObject {
+protocol DetailDisplayLogic: AnyObject {
     func displayUserDetail(viewModel: DetailModel.DisplayUserInfoDetails.ViewModel)
 }
 
@@ -22,11 +19,11 @@ protocol DetailPresenterOutput: AnyObject {
 /// 화면에 표시할 데이터를 담당하는 객체
 final class DetailPresenter {
     
-    weak var viewController: DetailPresenterOutput?
+    weak var viewController: DetailDisplayLogic?
     
     /// ListPresenter 인스턴스를 생성
     /// - Parameter viewController: presenter의 output
-    init(viewController: DetailPresenterOutput) {
+    init(viewController: DetailDisplayLogic) {
         self.viewController = viewController
     }
     
@@ -40,7 +37,7 @@ extension DetailPresenter {
 
 //MARK: - Interactor -> Presenter 통신
 
-extension DetailPresenter: DetailPresenterInput {
+extension DetailPresenter: DetailPresentationLogic {
     
     /// 이전 화면에서 받아온 깃허브 사용자 정보를
     /// ViewModel 포맷으로 변환 후 ViewController에 전달하기

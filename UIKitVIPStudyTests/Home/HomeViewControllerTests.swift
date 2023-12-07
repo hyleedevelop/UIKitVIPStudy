@@ -118,7 +118,7 @@ final class HomeViewControllerTests: XCTestCase {
 
 //MARK: - MockHomeInteractor 정의
 
-final class MockHomeInteractor: HomeViewControllerOutput {
+final class MockHomeInteractor: HomeBusinessLogic {
     
     // 해당 메서드의 호출 여부
     var isFetchUserInfoCalled = false

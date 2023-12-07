@@ -98,7 +98,7 @@ final class HomePresenterTests: XCTestCase {
 
 //MARK: - MockHomeViewController 정의
 
-final class MockHomeViewController: HomePresenterOutput {
+final class MockHomeViewController: HomeDisplayLogic {
     
     // 해당 메서드의 호출 여부
     var isDisplayUserProfileCalled = false

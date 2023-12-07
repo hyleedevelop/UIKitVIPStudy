@@ -35,7 +35,6 @@
 		07FC73CD2B1C67FE00088F92 /* HomeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FC73CC2B1C67FE00088F92 /* HomeInteractorTests.swift */; };
 		07FC73D42B1CB2B500088F92 /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FC73D32B1CB2B500088F92 /* HomePresenterTests.swift */; };
 		07FC73D62B1CC19900088F92 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FC73D52B1CC19900088F92 /* HomeViewControllerTests.swift */; };
-		07FC73D82B1CC1DF00088F92 /* HomeNetworkingWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FC73D72B1CC1DF00088F92 /* HomeNetworkingWorkerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +79,6 @@
 		07FC73CC2B1C67FE00088F92 /* HomeInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractorTests.swift; sourceTree = "<group>"; };
 		07FC73D32B1CB2B500088F92 /* HomePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; };
 		07FC73D52B1CC19900088F92 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
-		07FC73D72B1CC1DF00088F92 /* HomeNetworkingWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNetworkingWorkerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,12 +117,12 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		07480FCD2B18BDD0000615E6 /* Extension */ = {
+		07480FCD2B18BDD0000615E6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				07480FCE2B18BDDF000615E6 /* UIImageView.swift */,
 			);
-			path = Extension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		07B2472D2B182A6B008049EE = {
@@ -153,7 +151,7 @@
 				07B247422B182A6C008049EE /* Assets.xcassets */,
 				07B247442B182A6C008049EE /* LaunchScreen.storyboard */,
 				07B247472B182A6C008049EE /* Info.plist */,
-				07480FCD2B18BDD0000615E6 /* Extension */,
+				07480FCD2B18BDD0000615E6 /* Extensions */,
 				07C7F4032B197DC800F586EC /* Models */,
 				07B2474D2B182ABA008049EE /* Scenes */,
 			);
@@ -252,7 +250,6 @@
 				07FC73D52B1CC19900088F92 /* HomeViewControllerTests.swift */,
 				07FC73CC2B1C67FE00088F92 /* HomeInteractorTests.swift */,
 				07FC73D32B1CB2B500088F92 /* HomePresenterTests.swift */,
-				07FC73D72B1CC1DF00088F92 /* HomeNetworkingWorkerTests.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -394,7 +391,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07FC73D82B1CC1DF00088F92 /* HomeNetworkingWorkerTests.swift in Sources */,
 				078908042B1D58CE00BB6007 /* DetailViewControllerTests.swift in Sources */,
 				078908082B1D7E3400BB6007 /* DetailPresenterTests.swift in Sources */,
 				07FC73CD2B1C67FE00088F92 /* HomeInteractorTests.swift in Sources */,

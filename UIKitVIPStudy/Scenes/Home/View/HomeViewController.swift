@@ -9,18 +9,15 @@ import UIKit
 
 //MARK: - 프로토콜 선언
 
-/// **Presenter** -> **ViewController** 통신을 위해 준수해야 하는 프로토콜
-typealias HomeViewControllerInput = HomePresenterOutput
-
 /// **ViewController** -> **Interactor** 통신을 위해 준수해야 하는 프로토콜
-protocol HomeViewControllerOutput: AnyObject {
+protocol HomeBusinessLogic: AnyObject {
     var response: HomeModel.FetchUserInfo.Response? { get }
     
     func fetchUserInfo(request: HomeModel.FetchUserInfo.Request)
 }
 
 /// **ViewController** -> **Router** 통신을 위해 준수해야 하는 프로토콜
-protocol HomeRoutingLogic {
+protocol HomeRoutingLogic: AnyObject {
     var viewController: HomeViewController? { get }
     
     func navigateToDetail(dataToPass: UserInfo, animated: Bool)
@@ -44,7 +41,7 @@ class HomeViewController: UIViewController {
     var router: HomeRoutingLogic!
     
     /// **Interactor** (**Configurator**에 의해 초기화 됨)
-    var interactor: HomeViewControllerOutput!
+    var interactor: HomeBusinessLogic!
     
     /// **ViewController**의 인스턴스를 생성
     /// - Parameter configurator: Configurator 싱글톤 인스턴스
@@ -97,7 +94,7 @@ extension HomeViewController {
 
 //MARK: - Presenter -> ViewController 통신
 
-extension HomeViewController: HomeViewControllerInput {
+extension HomeViewController: HomeDisplayLogic {
 
     /// 네트워킹에 성공했을 때의 화면에 사용자 프로필 표시
     func displayUserProfile(viewModel: HomeModel.FetchUserInfo.ViewModel) {

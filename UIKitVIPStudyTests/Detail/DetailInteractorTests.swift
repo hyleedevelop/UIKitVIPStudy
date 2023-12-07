@@ -56,7 +56,7 @@ final class DetailInteractorTests: XCTestCase {
 
 //MARK: - MockDetailPresenter 정의
 
-final class MockDetailPresenter: DetailInteractorOutput {
+final class MockDetailPresenter: DetailPresentationLogic {
     
     // 해당 메서드의 호출 여부
     var isConvertResponseFormatCalled = false

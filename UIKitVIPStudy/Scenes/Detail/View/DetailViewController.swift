@@ -9,16 +9,13 @@ import UIKit
 
 //MARK: - 프로토콜 선언
 
-/// **Presenter** -> **ViewController** 통신을 위해 준수해야 하는 프로토콜
-typealias DetailViewControllerInput = DetailPresenterOutput
-
 /// **ViewController** -> **Interactor** 통신을 위해 준수해야 하는 프로토콜
-protocol DetailViewControllerOutput: AnyObject {
+protocol DetailBusinessLogic: AnyObject {
     func passUserInfoToPresenter(request: DetailModel.DisplayUserInfoDetails.Request)
 }
 
 /// **ViewController** -> **Router** 통신을 위해 준수해야 하는 프로토콜
-protocol DetailRoutingLogic {
+protocol DetailRoutingLogic: AnyObject {
     var viewController: DetailViewController? { get }
     
     func navigateToGithub(userID: String)
@@ -42,7 +39,7 @@ final class DetailViewController: UIViewController {
     var router: DetailRoutingLogic!
     
     /// **Interactor** (Configurator에 의해 초기화 됨)
-    var interactor: DetailViewControllerOutput!
+    var interactor: DetailBusinessLogic!
     
     /// ViewController의 인스턴스를 생성
     /// - Parameters:
@@ -106,7 +103,7 @@ extension DetailViewController {
 
 //MARK: - Presenter -> ViewController 통신
 
-extension DetailViewController: DetailViewControllerInput {
+extension DetailViewController: DetailDisplayLogic {
 
     /// TableView에 사용자 상세 정보 표시
     func displayUserDetail(viewModel: DetailModel.DisplayUserInfoDetails.ViewModel) {
