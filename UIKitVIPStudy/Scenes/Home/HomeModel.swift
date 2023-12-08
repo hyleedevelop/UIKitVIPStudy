@@ -33,7 +33,7 @@ struct HomeModel {
     }
     
     /// 다른 상황에서 사용하는 모델
-    struct OtherCases {
+    struct OtherUseCases {
         // ...
     }
     

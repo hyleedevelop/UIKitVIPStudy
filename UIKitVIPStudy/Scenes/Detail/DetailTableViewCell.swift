@@ -75,7 +75,6 @@ extension DetailTableViewCell {
             self.accountStackView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -10),
             self.accountStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 15),
             self.accountStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-            //self.accountStackView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor)
         ])
     }
     

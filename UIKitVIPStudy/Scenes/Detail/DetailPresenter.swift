@@ -21,7 +21,7 @@ final class DetailPresenter {
     
     weak var viewController: DetailDisplayLogic?
     
-    /// ListPresenter 인스턴스를 생성
+    /// DetailPresenter 인스턴스를 생성
     /// - Parameter viewController: presenter의 output
     init(viewController: DetailDisplayLogic) {
         self.viewController = viewController

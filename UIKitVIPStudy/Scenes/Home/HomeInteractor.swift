@@ -36,7 +36,10 @@ class HomeInteractor {
     /// - Parameters:
     ///   - presenter: Interactor와 통신하는 Presenter
     ///   - networkingWorker: 사용자 정보를 네트워킹으로 가져오기 위한 Worker
-    init(presenter: HomePresentationLogic, networkingWorker: HomeNetworkingLogic = HomeNetworkingWorker()) {
+    init(
+        presenter: HomePresentationLogic,
+        networkingWorker: HomeNetworkingLogic = HomeNetworkingWorker()
+    ) {
         self.presenter = presenter
         self.networkingWorker = networkingWorker
     }

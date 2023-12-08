@@ -79,7 +79,7 @@ final class HomeInteractorTests: XCTestCase {
         }
     }
     
-    /// 네트워킹에 성공했을 때 **Presenter**의
+    /// 네트워킹에 실패했을 때 **Presenter**의
     /// `passFailStatus` 메서드를 정상적으로 호출하는지에 대한 테스트
     func testInteractorShouldAskPresenterToPassFailStatus() {
         // Given
